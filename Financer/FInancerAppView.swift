@@ -8,21 +8,6 @@
 import SwiftUI
 
 struct FinancerAppView: View {
-    
-    struct Expense: Identifiable, Codable, Equatable {
-        var id: UUID
-        var title: String
-        var amount: Double
-        var category: String
-        var date: Date
-    }
-
-    struct Category: Identifiable, Codable, Equatable {
-        var id: UUID
-        var name: String
-        var color: Color
-    }
-    
     var body: some View {
         TabView {
             HomeView()
@@ -49,3 +34,6 @@ struct FinancerAppView: View {
     }
 }
 
+#Preview {
+    FinancerAppView()
+}
