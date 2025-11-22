@@ -12,28 +12,26 @@ struct FinancerAppView: View {
         TabView {
             HomeView()
                 .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("Home")
+                    Label("Home", systemImage: "house.fill")
                 }
             AddExpenseView()
                 .tabItem {
-                    Image(systemName: "plus.circle.fill")
-                    Text("Add")
+                    Label("Add", systemImage: "plus.circle.fill")
                 }
             ReportsView()
                 .tabItem {
-                    Image(systemName: "chart.bar.fill")
-                    Text("Reports")
+                    Label("Reports", systemImage: "chart.bar.fill")
                 }
             SettingsView()
                 .tabItem {
-                    Image(systemName: "gearshape.fill")
-                    Text("Settings")
+                    Label("Settings", systemImage: "gearshape.fill")
                 }
         }
+        .tint(Color("Primary"))
     }
 }
 
 #Preview {
     FinancerAppView()
+        .environmentObject(ExpenseStore())
 }

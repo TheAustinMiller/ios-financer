@@ -14,6 +14,7 @@ struct FinancerApp: App {
     var body: some Scene {
         WindowGroup {
             FinancerAppView()
+                .tint(Color("Primary"))
                 .environmentObject(store)
         }
     }
