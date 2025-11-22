@@ -38,7 +38,7 @@ struct AddExpenseFormView: View {
             id: UUID(),
             title: title,
             amount: Double(amount) ?? 0,
-            category: selectedCategory.rawValue,
+            category: selectedCategory,
             date: date
         )
         store.addExpense(expense)

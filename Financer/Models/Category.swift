@@ -4,6 +4,7 @@
 //
 //  Created by Big Guy on 11/20/25.
 //
+
 import Foundation
 import SwiftUI
 
@@ -29,6 +30,19 @@ enum Category: String, CaseIterable, Codable {
         case .bills: return "bolt.fill"
         case .education: return "book.fill"
         case .travel: return "airplane"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .food: return .orange
+        case .transport: return .blue
+        case .shopping: return .pink
+        case .health: return .red
+        case .entertainment: return .purple
+        case .bills: return .yellow
+        case .education: return .green
+        case .travel: return .teal
         }
     }
 }

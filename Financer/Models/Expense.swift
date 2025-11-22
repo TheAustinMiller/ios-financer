@@ -11,6 +11,6 @@ struct Expense: Identifiable, Codable, Equatable {
     var id: UUID
     var title: String
     var amount: Double
-    var category: String
+    var category: Category
     var date: Date
 }

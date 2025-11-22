@@ -1,4 +1,3 @@
-
 //
 //  AddExpense.swift
 //  Financer
@@ -7,6 +6,12 @@
 //
 
 import SwiftUI
+
+let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    return formatter
+}()
 
 struct AddExpenseView: View {
     @State private var showingAddExpense = false
@@ -37,7 +42,7 @@ struct AddExpenseView: View {
                 .padding(.top, 10)
 
                 List {
-                    ForEach(store.expenses) { expense in
+                    ForEach(store.expenses.sorted(by: { $0.date > $1.date })) { expense in
                         HStack {
                             VStack(alignment: .leading) {
                                 Text(expense.title)
@@ -48,6 +53,17 @@ struct AddExpenseView: View {
                                     .font(.subheadline)
                                     .foregroundColor(Color("TextPrimary").opacity(0.7))
                             }
+                            .frame(width: 140, alignment: .leading)
+                            
+                            Image(systemName: expense.category.systemImage)
+                                .font(.title3)
+                                .foregroundColor(expense.category.color)
+                                .frame(width: 40)
+                            Spacer()
+                            Text(expense.date, formatter: dateFormatter)
+                                .font(.headline)
+                                .foregroundColor(Color("TextPrimary"))
+                                .frame(width: 90, alignment: .trailing)
                         }
                         .padding(.vertical, 6)
                         .listRowBackground(Color("Background"))
