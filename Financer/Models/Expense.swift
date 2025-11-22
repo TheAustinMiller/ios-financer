@@ -14,9 +14,3 @@ struct Expense: Identifiable, Codable, Equatable {
     var category: String
     var date: Date
 }
-
-struct Category: Identifiable, Equatable {
-    var id: UUID
-    var name: String
-    var color: Color
-}

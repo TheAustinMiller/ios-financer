@@ -1,3 +1,4 @@
+
 //
 //  AddExpense.swift
 //  Financer
@@ -12,33 +13,57 @@ struct AddExpenseView: View {
     @EnvironmentObject var store: ExpenseStore
 
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack {
             Color("Background")
                 .ignoresSafeArea()
 
-            Button {
-                showingAddExpense = true
-            } label: {
-                HStack {
-                    Text("Add Expense")
-                    Image(systemName: "plus")
-                        .font(.title2)
+            VStack(spacing: 16) {
+                Button {
+                    showingAddExpense = true
+                } label: {
+                    HStack {
+                        Text("Add Expense")
+                        Image(systemName: "plus")
+                            .font(.title2)
+                    }
+                    .font(.title2.bold())
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color("Primary"))
+                    .foregroundColor(Color("TextPrimary"))
+                    .cornerRadius(12)
                 }
-                .font(.title2.bold())
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(12)
-            }
-            .padding(.horizontal)
-            .padding(.top, 20)
-            .sheet(isPresented: $showingAddExpense) {
-                AddExpenseFormView()
-                    .environmentObject(store)
+                .padding(.horizontal)
+                .padding(.top, 10)
+
+                List {
+                    ForEach(store.expenses) { expense in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(expense.title)
+                                    .font(.headline)
+                                    .foregroundColor(Color("TextPrimary"))
+
+                                Text("$\(expense.amount, specifier: "%.2f")")
+                                    .font(.subheadline)
+                                    .foregroundColor(Color("TextPrimary").opacity(0.7))
+                            }
+                        }
+                        .padding(.vertical, 6)
+                        .listRowBackground(Color("Background"))
+                    }
+                }
+                .scrollContentBackground(.hidden)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .sheet(isPresented: $showingAddExpense) {
+            AddExpenseFormView()
+                .environmentObject(store)
+        }
     }
 }
 
+#Preview {
+    AddExpenseView()
+        .environmentObject(ExpenseStore())
+}
