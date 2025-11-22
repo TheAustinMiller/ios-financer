@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct ReportsView: View {
+    @EnvironmentObject var store: ExpenseStore
+    
     var body: some View {
         VStack {
+            CategoryPieChartView()
+                .environmentObject(store)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("Background"))
         .ignoresSafeArea()
     }
+}
+
+#Preview {
+    ReportsView()
+        .environmentObject(ExpenseStore())
 }
