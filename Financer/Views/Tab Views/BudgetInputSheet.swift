@@ -10,6 +10,7 @@ import SwiftUI
 struct BudgetInputSheet: View {
     @Binding var monthlyBudget: Double
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var store: ExpenseStore
     
     @State private var tempBudget: String = ""
     
@@ -94,7 +95,7 @@ struct BudgetInputSheet: View {
             .padding(.horizontal, 20)
             .padding(.bottom, 20)
         }
-        .background(Color("Background").ignoresSafeArea())
+        .background(store.backgroundColor.ignoresSafeArea())
         .onAppear {
             tempBudget = String(format: "%.0f", monthlyBudget)
         }
@@ -103,4 +104,5 @@ struct BudgetInputSheet: View {
 
 #Preview {
     BudgetInputSheet(monthlyBudget: .constant(1500))
+        .environmentObject(ExpenseStore())
 }

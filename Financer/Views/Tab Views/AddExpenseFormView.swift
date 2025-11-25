@@ -171,7 +171,7 @@ struct AddExpenseFormView: View {
                 }
                 .padding(20)
             }
-            .background(Color("Background"))
+            .background(store.backgroundColor)
             .navigationTitle("Add Expense")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {

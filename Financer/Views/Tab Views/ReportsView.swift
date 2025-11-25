@@ -16,7 +16,7 @@ struct ReportsView: View {
                 .environmentObject(store)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("Background"))
+        .background(store.backgroundColor)
         .ignoresSafeArea()
     }
 }

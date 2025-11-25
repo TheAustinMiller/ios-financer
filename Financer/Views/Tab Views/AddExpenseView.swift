@@ -19,7 +19,7 @@ struct AddExpenseView: View {
 
     var body: some View {
         ZStack {
-            Color("Background")
+            Color(store.backgroundColor)
                 .ignoresSafeArea()
 
             VStack(spacing: 16) {
@@ -67,7 +67,7 @@ struct AddExpenseView: View {
                                     .frame(width: 90, alignment: .trailing)
                             }
                             .padding(.vertical, 6)
-                            .listRowBackground(Color("Background"))
+                            .listRowBackground(store.backgroundColor)
                         }
                         .onDelete(perform: store.deleteExpense)
                         .tint(Color("TextPrimary"))

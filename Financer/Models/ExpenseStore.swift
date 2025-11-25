@@ -16,6 +16,11 @@ class ExpenseStore: ObservableObject {
     ]
     @Published var categories: [Category] = []
     @Published var monthlyBudget: Double = 1000
+    @Published var darkModeEnabled: Bool = true
+    
+    var backgroundColor: Color {
+            darkModeEnabled ? Color("Background") : Color.white.opacity(0.90)
+    }
 
     func addExpense(_ expense: Expense) { expenses.append(expense) }
     func deleteExpense(at offsets: IndexSet) { expenses.remove(atOffsets: offsets) }

@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var store: ExpenseStore
     @State private var showingBudgetSheet = false
+    @State private var darkModeEnabled = true
     
     var body: some View {
         NavigationStack {
@@ -60,11 +61,49 @@ struct SettingsView: View {
                                     .stroke(Color("Primary").opacity(0.2), lineWidth: 1)
                             )
                     )
+                    
+                    Text("Aesthetic Settings")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color("TextPrimary").opacity(0.7))
+                        .textCase(.uppercase)
+                        .tracking(0.5)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 4)
+                        .padding(.top, 10)
+                    
+                    VStack {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Dark Mode")
+                                    .font(.headline)
+                                    .foregroundColor(Color("TextPrimary"))
+
+                                Text("Tap to toggle dark mode")
+                                    .font(.caption)
+                                    .foregroundColor(Color("TextPrimary").opacity(0.6))
+                            }
+
+                            Spacer()
+
+                            Toggle("", isOn: $store.darkModeEnabled)
+                                .toggleStyle(SwitchToggleStyle(tint: Color("Accent")))
+                        }
+                        .padding()
+                    }
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.white.opacity(0.05))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color("Primary").opacity(0.2), lineWidth: 1)
+                            )
+                    )
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 40)
             }
-            .background(Color("Background"))
+            .background(store.backgroundColor)
             .ignoresSafeArea(edges: .bottom)
             .toolbar(.hidden)
         }

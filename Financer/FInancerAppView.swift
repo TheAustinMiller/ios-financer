@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FinancerAppView: View {
+    @EnvironmentObject var store: ExpenseStore
+    
     var body: some View {
         TabView {
             HomeView()
@@ -28,6 +30,7 @@ struct FinancerAppView: View {
                 }
         }
         .tint(Color("Primary"))
+        .preferredColorScheme(store.darkModeEnabled ? .dark : .light)
     }
 }
 
