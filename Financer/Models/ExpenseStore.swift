@@ -15,6 +15,7 @@ class ExpenseStore: ObservableObject {
         Expense(id: UUID(), title: "Public Transport", amount: 2.99, category: .transport, date: Date())
     ]
     @Published var categories: [Category] = []
+    @Published var monthlyBudget: Double = 1000
 
     func addExpense(_ expense: Expense) { expenses.append(expense) }
     func deleteExpense(at offsets: IndexSet) { expenses.remove(atOffsets: offsets) }
