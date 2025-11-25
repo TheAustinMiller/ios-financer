@@ -64,7 +64,7 @@ struct AddExpenseFormView: View {
                             .padding()
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color.white.opacity(0.05))
+                                    .fill(store.textColor.opacity(0.05))
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 12)
                                             .stroke(Color("Primary").opacity(0.3), lineWidth: 1)
@@ -98,7 +98,7 @@ struct AddExpenseFormView: View {
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.white.opacity(0.05))
+                                .fill(store.textColor.opacity(0.05))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 12)
                                         .stroke(Color("Primary").opacity(0.3), lineWidth: 1)
@@ -149,7 +149,7 @@ struct AddExpenseFormView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color.white.opacity(0.05))
+                                    .fill(store.textColor.opacity(0.05))
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 12)
                                             .stroke(Color("Primary").opacity(0.3), lineWidth: 1)
@@ -162,7 +162,7 @@ struct AddExpenseFormView: View {
                     Button(action: saveExpense) {
                         Text("Save Expense")
                             .font(.headline)
-                            .foregroundColor(store.textColor)
+                            .foregroundColor(Color("TextPrimary"))
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(saveButtonBackground)
@@ -216,7 +216,7 @@ struct CategoryButton: View {
             .padding(.vertical, 12)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? Color("Accent").opacity(0.2) : Color.white.opacity(0.05))
+                    .fill(isSelected ? Color("Accent").opacity(0.2) : store.textColor.opacity(0.05))
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(

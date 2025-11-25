@@ -35,7 +35,7 @@ struct AddExpenseView: View {
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color("Primary"))
-                    .foregroundColor(store.textColor)
+                    .foregroundColor(Color("TextPrimary"))
                     .cornerRadius(12)
                 }
                 .padding(.horizontal)

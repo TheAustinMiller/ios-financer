@@ -66,7 +66,7 @@ struct BudgetInputSheet: View {
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.white.opacity(0.05))
+                        .fill(store.textColor.opacity(0.05))
                         .overlay(
                             RoundedRectangle(cornerRadius: 12)
                                 .stroke(Color("Primary").opacity(0.3), lineWidth: 1)
@@ -86,7 +86,7 @@ struct BudgetInputSheet: View {
             }) {
                 Text("Save Budget")
                     .font(.headline)
-                    .foregroundColor(store.textColor)
+                    .foregroundColor(Color("TextPrimary"))
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(saveButtonBackground)
