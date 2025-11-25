@@ -25,6 +25,15 @@ class ExpenseStore: ObservableObject {
     var textColor: Color {
         darkModeEnabled ? Color("TextPrimary") : Color("Background")
     }
+    
+    var monthlySpent: Double {
+        let calendar = Calendar.current
+        let now = Date()
+        return expenses
+            .filter { calendar.isDate($0.date, equalTo: now, toGranularity: .month) }
+            .map { $0.amount }
+            .reduce(0, +)
+    }
 
     func addExpense(_ expense: Expense) { expenses.append(expense) }
     func deleteExpense(at offsets: IndexSet) { expenses.remove(atOffsets: offsets) }
