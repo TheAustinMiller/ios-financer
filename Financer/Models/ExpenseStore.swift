@@ -34,5 +34,8 @@ class ExpenseStore: ObservableObject {
         }
         .filter { $0.total > 0 }
     }
-
+    
+    var todaysExpenseCount: Int {
+        expenses.filter { Calendar.current.isDateInToday($0.date) }.count
+    }
 }
