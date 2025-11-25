@@ -37,7 +37,7 @@ struct BudgetInputSheet: View {
             // TITLE
             Text("Set Monthly Budget")
                 .font(.largeTitle.bold())
-                .foregroundColor(Color("TextPrimary"))
+                .foregroundColor(store.textColor)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
@@ -47,7 +47,7 @@ struct BudgetInputSheet: View {
                 Text("Budget Amount")
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                    .foregroundColor(Color("TextPrimary").opacity(0.7))
+                    .foregroundColor(store.textColor.opacity(0.7))
                     .textCase(.uppercase)
                     .tracking(0.5)
                 
@@ -59,7 +59,7 @@ struct BudgetInputSheet: View {
                     
                     TextField("0", text: $tempBudget)
                         .font(.title2)
-                        .foregroundColor(Color("TextPrimary"))
+                        .foregroundColor(store.textColor)
                         .keyboardType(.decimalPad)
                         .tint(Color("Accent"))
                 }
@@ -86,7 +86,7 @@ struct BudgetInputSheet: View {
             }) {
                 Text("Save Budget")
                     .font(.headline)
-                    .foregroundColor(Color("TextPrimary"))
+                    .foregroundColor(store.textColor)
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(saveButtonBackground)

@@ -38,13 +38,13 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 8) {
                 
                 Text("Welcome to Financer")
-                    .foregroundColor(Color("TextPrimary"))
+                    .foregroundColor(store.textColor)
                     .font(.largeTitle.bold())
                     .padding(.top, 40)
                 
                 Text("\(today) - \(todaysExpenses.count) expense\(todaysExpenses.count == 1 ? "" : "s") today")
                     .font(.subheadline)
-                    .foregroundColor(Color("TextPrimary").opacity(0.6))
+                    .foregroundColor(store.textColor.opacity(0.6))
                     .fontWeight(.medium)
                 
                 Spacer()

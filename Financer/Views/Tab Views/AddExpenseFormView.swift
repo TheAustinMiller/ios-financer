@@ -54,13 +54,13 @@ struct AddExpenseFormView: View {
                         Text("Title")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .foregroundColor(Color("TextPrimary").opacity(0.7))
+                            .foregroundColor(store.textColor.opacity(0.7))
                             .textCase(.uppercase)
                             .tracking(0.5)
                         
                         TextField("e.g., Grocery shopping", text: $title)
                             .font(.body)
-                            .foregroundColor(Color("TextPrimary"))
+                            .foregroundColor(store.textColor)
                             .padding()
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
@@ -78,7 +78,7 @@ struct AddExpenseFormView: View {
                         Text("Amount")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .foregroundColor(Color("TextPrimary").opacity(0.7))
+                            .foregroundColor(store.textColor).opacity(0.7)
                             .textCase(.uppercase)
                             .tracking(0.5)
                         
@@ -91,7 +91,7 @@ struct AddExpenseFormView: View {
                             TextField("0.00", text: $amount)
                                 .font(.title2)
                                 .fontWeight(.medium)
-                                .foregroundColor(Color("TextPrimary"))
+                                .foregroundColor(store.textColor)
                                 .keyboardType(.decimalPad)
                                 .tint(Color("Accent"))
                         }
@@ -111,7 +111,7 @@ struct AddExpenseFormView: View {
                         Text("Category")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .foregroundColor(Color("TextPrimary").opacity(0.7))
+                            .foregroundColor(store.textColor.opacity(0.7))
                             .textCase(.uppercase)
                             .tracking(0.5)
                         
@@ -137,7 +137,7 @@ struct AddExpenseFormView: View {
                         Text("Date")
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                            .foregroundColor(Color("TextPrimary").opacity(0.7))
+                            .foregroundColor(store.textColor.opacity(0.7))
                             .textCase(.uppercase)
                             .tracking(0.5)
                         
@@ -162,7 +162,7 @@ struct AddExpenseFormView: View {
                     Button(action: saveExpense) {
                         Text("Save Expense")
                             .font(.headline)
-                            .foregroundColor(Color("TextPrimary"))
+                            .foregroundColor(store.textColor)
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(saveButtonBackground)
@@ -181,7 +181,7 @@ struct AddExpenseFormView: View {
                             Image(systemName: "xmark")
                                 .font(.system(size: 14, weight: .semibold))
                         }
-                        .foregroundColor(Color("TextPrimary").opacity(0.7))
+                        .foregroundColor(store.textColor.opacity(0.7))
                     }
                 }
             }
@@ -192,6 +192,7 @@ struct AddExpenseFormView: View {
 
 // MARK: - Category Button Component
 struct CategoryButton: View {
+    @EnvironmentObject var store: ExpenseStore
     let category: Category
     let isSelected: Bool
     let action: () -> Void
@@ -201,13 +202,13 @@ struct CategoryButton: View {
             VStack(spacing: 8) {
                 Image(systemName: category.systemImage)
                     .font(.system(size: 24))
-                    .foregroundColor(isSelected ? Color("TextPrimary") : Color("TextPrimary").opacity(0.5))
+                    .foregroundColor(isSelected ? store.textColor : store.textColor.opacity(0.5))
                     .frame(height: 28)
                 
                 Text(category.rawValue.split(separator: " ").first.map(String.init) ?? "")
                     .font(.caption2)
                     .fontWeight(.medium)
-                    .foregroundColor(isSelected ? Color("TextPrimary") : Color("TextPrimary").opacity(0.5))
+                    .foregroundColor(isSelected ? store.textColor : store.textColor.opacity(0.5))
                     .lineLimit(1)
                     .minimumScaleFactor(0.8)
             }

@@ -35,7 +35,7 @@ struct AddExpenseView: View {
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color("Primary"))
-                    .foregroundColor(Color("TextPrimary"))
+                    .foregroundColor(store.textColor)
                     .cornerRadius(12)
                 }
                 .padding(.horizontal)
@@ -48,11 +48,11 @@ struct AddExpenseView: View {
                                 VStack(alignment: .leading) {
                                     Text(expense.title)
                                         .font(.headline)
-                                        .foregroundColor(Color("TextPrimary"))
+                                        .foregroundColor(store.textColor)
 
                                     Text("$\(expense.amount, specifier: "%.2f")")
                                         .font(.subheadline)
-                                        .foregroundColor(Color("TextPrimary").opacity(0.7))
+                                        .foregroundColor(store.textColor.opacity(0.7))
                                 }
                                 .frame(width: 140, alignment: .leading)
                                 
@@ -63,20 +63,20 @@ struct AddExpenseView: View {
                                 Spacer()
                                 Text(expense.date, formatter: dateFormatter)
                                     .font(.headline)
-                                    .foregroundColor(Color("TextPrimary"))
+                                    .foregroundColor(store.textColor)
                                     .frame(width: 90, alignment: .trailing)
                             }
                             .padding(.vertical, 6)
                             .listRowBackground(store.backgroundColor)
                         }
                         .onDelete(perform: store.deleteExpense)
-                        .tint(Color("TextPrimary"))
+                        .tint(store.textColor)
                     }
                     .scrollContentBackground(.hidden)
                 } else {
                     HStack {
                         Text("Add an expense to begin")
-                            .foregroundColor(Color("TextPrimary"))
+                            .foregroundColor(store.textColor)
                     }
                 }
             }

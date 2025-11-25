@@ -21,6 +21,10 @@ class ExpenseStore: ObservableObject {
     var backgroundColor: Color {
             darkModeEnabled ? Color("Background") : Color.white.opacity(0.90)
     }
+    
+    var textColor: Color {
+        darkModeEnabled ? Color("TextPrimary") : Color("Background")
+    }
 
     func addExpense(_ expense: Expense) { expenses.append(expense) }
     func deleteExpense(at offsets: IndexSet) { expenses.remove(atOffsets: offsets) }

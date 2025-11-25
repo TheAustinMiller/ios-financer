@@ -21,7 +21,7 @@ struct SettingsView: View {
                     Text("Financial Settings")
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                        .foregroundColor(Color("TextPrimary").opacity(0.7))
+                        .foregroundColor(store.textColor.opacity(0.7))
                         .textCase(.uppercase)
                         .tracking(0.5)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -37,11 +37,11 @@ struct SettingsView: View {
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text("Monthly Budget")
                                         .font(.headline)
-                                        .foregroundColor(Color("TextPrimary"))
+                                        .foregroundColor(store.textColor)
 
                                     Text("Tap to change your monthly limit")
                                         .font(.caption)
-                                        .foregroundColor(Color("TextPrimary").opacity(0.6))
+                                        .foregroundColor(store.textColor.opacity(0.6))
                                 }
 
                                 Spacer()
@@ -65,7 +65,7 @@ struct SettingsView: View {
                     Text("Aesthetic Settings")
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                        .foregroundColor(Color("TextPrimary").opacity(0.7))
+                        .foregroundColor(store.textColor.opacity(0.7))
                         .textCase(.uppercase)
                         .tracking(0.5)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -77,11 +77,11 @@ struct SettingsView: View {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("Dark Mode")
                                     .font(.headline)
-                                    .foregroundColor(Color("TextPrimary"))
+                                    .foregroundColor(store.textColor)
 
                                 Text("Tap to toggle dark mode")
                                     .font(.caption)
-                                    .foregroundColor(Color("TextPrimary").opacity(0.6))
+                                    .foregroundColor(store.textColor.opacity(0.6))
                             }
 
                             Spacer()
