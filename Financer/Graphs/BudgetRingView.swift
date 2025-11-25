@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BudgetRingView: View {
+    @EnvironmentObject var store: ExpenseStore
     var spent: Double
     var budget: Double
 
@@ -18,7 +19,7 @@ struct BudgetRingView: View {
             // Background ring
             Circle()
                 .stroke(
-                    Color.white.opacity(0.15),
+                    store.textColor.opacity(0.1),
                     lineWidth: 22
                 )
 
@@ -51,9 +52,3 @@ struct BudgetRingView: View {
         .padding()
     }
 }
-
-
-#Preview {
-    BudgetRingView(spent: 100, budget: 200)
-}
-

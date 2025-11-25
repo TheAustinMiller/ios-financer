@@ -51,10 +51,14 @@ struct HomeView: View {
             }
             .padding(.horizontal)
             
-            VStack(spacing: 24) {
+            VStack(spacing: 50) {
                 BudgetRingView(spent: store.monthlySpent, budget: store.monthlyBudget)
+                MonthlySummaryCard(
+                        spent: store.monthlySpent,
+                        budget: store.monthlyBudget
+                    )
             }
-            .padding()
+            .padding(.horizontal, 50)
         }
     }
 }
