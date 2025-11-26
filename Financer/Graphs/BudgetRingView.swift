@@ -48,7 +48,7 @@ struct BudgetRingView: View {
                     .foregroundColor(.secondary)
             }
         }
-        .frame(width: 220, height: 220)
+        .frame(width: 250, height: 250)
         .padding()
     }
 }
