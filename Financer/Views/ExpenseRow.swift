@@ -11,6 +11,7 @@ struct ExpenseRow: View {
     let expense: Expense
     let onDelete: () -> Void
     @EnvironmentObject var store: ExpenseStore
+    @State private var showingEdit = false
     
     var body: some View {
         HStack(spacing: 14) {
@@ -43,14 +44,21 @@ struct ExpenseRow: View {
         }
         .padding(.vertical, 6)
         .contextMenu {
+            Button {
+                showingEdit = true
+            } label: {
+                Label("Update", systemImage: "pencil")
+            }
+
             Button(role: .destructive) {
                 onDelete()
             } label: {
-                HStack {
-                    Text("Delete")
-                    Image(systemName: "trash")
-                }
+                Label("Delete", systemImage: "trash")
             }
+        }
+        .sheet(isPresented: $showingEdit) {
+            AddExpenseFormView(expenseToEdit: expense) 
+                .environmentObject(store)
         }
     }
 }
