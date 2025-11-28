@@ -62,6 +62,8 @@ struct SettingsView: View {
                             )
                     )
                     
+                    // CLEAR BUTTON TO DO HERE
+                    
                     Text("Aesthetic Settings")
                         .font(.subheadline)
                         .fontWeight(.semibold)
