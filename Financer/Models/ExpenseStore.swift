@@ -15,8 +15,8 @@ class ExpenseStore: ObservableObject {
         Expense(id: UUID(), title: "Public Transport", amount: 2.99, category: .transport, date: Date())
     ]
     @Published var categories: [Category] = []
-    @Published var monthlyBudget: Double = 1000
-    @Published var darkModeEnabled: Bool = true
+    @AppStorage("monthlyBudget") var monthlyBudget: Double = 1000
+    @AppStorage("darkMode") var darkModeEnabled: Bool = true
     
     var backgroundColor: Color {
             darkModeEnabled ? Color("Background") : Color.white.opacity(0.90)
@@ -34,8 +34,35 @@ class ExpenseStore: ObservableObject {
             .map { $0.amount }
             .reduce(0, +)
     }
+    
+    func saveData() {
+        do {
+            let data = try JSONEncoder().encode(expenses)
+            let url = getDocumentsDirectory().appendingPathComponent("expenses.json")
+            try data.write(to: url)
+        } catch {
+            print("Error saving expenses:", error)
+        }
+    }
 
-    func addExpense(_ expense: Expense) { expenses.append(expense) }
+    func addExpense(_ expense: Expense) {
+        expenses.append(expense)
+        saveData()
+    }
+    
+    func loadData() {
+        let url = getDocumentsDirectory().appendingPathComponent("expenses.json")
+        if let data = try? Data(contentsOf: url) {
+            if let decoded = try? JSONDecoder().decode([Expense].self, from: data) {
+                self.expenses = decoded
+            }
+        }
+    }
+    
+    private func getDocumentsDirectory() -> URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    }
+
     func deleteExpense(at offsets: IndexSet) { expenses.remove(atOffsets: offsets) }
     func updateExpense(_ expense: Expense) {
         if let index = expenses.firstIndex(where: { $0.id == expense.id }) {
@@ -56,5 +83,9 @@ class ExpenseStore: ObservableObject {
     
     var todaysExpenseCount: Int {
         expenses.filter { Calendar.current.isDateInToday($0.date) }.count
+    }
+    
+    init() {
+        loadData()
     }
 }
