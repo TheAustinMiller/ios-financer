@@ -26,7 +26,7 @@ struct MonthlyLineChartView: View {
             Text("Monthly Spending")
                 .font(.headline)
                 .padding(.horizontal)
-                .foregroundColor(Color("TextPrimary"))
+                .foregroundColor(store.textColor)
 
             Chart {
                 ForEach(dailySpending, id: \.day) { entry in

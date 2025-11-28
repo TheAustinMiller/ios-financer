@@ -33,7 +33,7 @@ struct WeeklyBarChartView: View {
             Text("Weekly Breakdown")
                 .font(.headline)
                 .padding(.horizontal)
-                .foregroundColor(Color("TextPrimary"))
+                .foregroundColor(store.textColor)
             
             Chart {
                 ForEach(weeklyTotals, id: \.day) { entry in

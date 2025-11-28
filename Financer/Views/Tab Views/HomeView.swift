@@ -35,7 +35,7 @@ struct HomeView: View {
             Color(store.backgroundColor)
                 .ignoresSafeArea()
 
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .center, spacing: 8) {
                 
                 Text("Welcome to Financer")
                     .foregroundColor(store.textColor)

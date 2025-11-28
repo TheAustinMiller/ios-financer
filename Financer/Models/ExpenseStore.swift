@@ -19,7 +19,7 @@ class ExpenseStore: ObservableObject {
     @AppStorage("darkMode") var darkModeEnabled: Bool = true
     
     var backgroundColor: Color {
-            darkModeEnabled ? Color("Background") : Color.white.opacity(0.90)
+            darkModeEnabled ? Color("Background") : Color.white.opacity(0.80)
     }
     
     var textColor: Color {

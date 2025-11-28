@@ -10,6 +10,7 @@ import SwiftUI
 struct MonthlySummaryCard: View {
     var spent: Double
     var budget: Double
+    @EnvironmentObject var store: ExpenseStore
     
     private var remaining: Double { max(budget - spent, 0) }
     private var avgPerDay: Double {
@@ -28,7 +29,7 @@ struct MonthlySummaryCard: View {
             HStack {
                 Text("This Month")
                     .font(.headline)
-                    .foregroundColor(Color("TextPrimary"))
+                    .foregroundColor(store.textColor)
                 Spacer()
             }
             
