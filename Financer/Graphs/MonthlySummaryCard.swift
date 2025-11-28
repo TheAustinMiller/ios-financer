@@ -73,7 +73,7 @@ struct MonthlySummaryCard: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color.white.opacity(0.05))
+                .fill(store.textColor.opacity(0.05))
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
                         .stroke(Color("Primary").opacity(0.2), lineWidth: 1)

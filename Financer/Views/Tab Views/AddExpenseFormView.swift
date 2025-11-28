@@ -162,7 +162,7 @@ struct AddExpenseFormView: View {
                     Button(action: saveExpense) {
                         Text("Save Expense")
                             .font(.headline)
-                            .foregroundColor(Color("TextPrimary"))
+                            .foregroundColor(store.textColor)
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(saveButtonBackground)
@@ -186,7 +186,6 @@ struct AddExpenseFormView: View {
                 }
             }
         }
-        .preferredColorScheme(.dark)
     }
 }
 
@@ -202,7 +201,7 @@ struct CategoryButton: View {
             VStack(spacing: 8) {
                 Image(systemName: category.systemImage)
                     .font(.system(size: 24))
-                    .foregroundColor(isSelected ? store.textColor : store.textColor.opacity(0.5))
+                    .foregroundColor(isSelected ? category.color : store.textColor)
                     .frame(height: 28)
                 
                 Text(category.rawValue.split(separator: " ").first.map(String.init) ?? "")
