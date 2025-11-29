@@ -71,12 +71,3 @@ A clean, modern iOS application built with **SwiftUI** to help users track expen
 
 ## 📄 License
 This project is available under the **MIT License**, granting broad rights to modify and distribute while providing liability protection.
-
----
-
-<div align="center">
-
-### 💛 Acknowledgments
-Built with care using the latest SwiftUI APIs, focusing on clarity, thoughtful UI, and empowering users to take control of their financial wellbeing.
-
-</div>
