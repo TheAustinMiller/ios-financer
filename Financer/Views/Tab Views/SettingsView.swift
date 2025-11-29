@@ -62,12 +62,38 @@ struct SettingsView: View {
                                                 .foregroundColor(store.textColor.opacity(0.6))
                                         }
                                         Spacer()
-                                        Text("$\(store.monthlyBudget, specifier: "%.0f")")
+                                        Text("\(store.europeanCurrency ? "€" : "$")\(store.monthlyBudget, specifier: "%.0f")")
                                             .font(.headline)
                                             .foregroundColor(Color("Accent"))
                                     }
                                     .padding()
                                 }
+                            }
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(store.textColor.opacity(0.05))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .stroke(Color("Primary").opacity(0.2), lineWidth: 1)
+                                    )
+                            )
+                            
+                            VStack {
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("EU Currency")
+                                            .font(.headline)
+                                            .foregroundColor(store.textColor)
+                                        
+                                        Text("Tap to toggle the currency")
+                                            .font(.caption)
+                                            .foregroundColor(store.textColor.opacity(0.6))
+                                    }
+                                    Spacer()
+                                    Toggle("", isOn: $store.europeanCurrency)
+                                        .toggleStyle(SwitchToggleStyle(tint: Color("Accent")))
+                                }
+                                .padding()
                             }
                             .background(
                                 RoundedRectangle(cornerRadius: 16)

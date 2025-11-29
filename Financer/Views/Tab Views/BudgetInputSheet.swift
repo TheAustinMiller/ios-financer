@@ -52,7 +52,7 @@ struct BudgetInputSheet: View {
                     .tracking(0.5)
                 
                 HStack {
-                    Text("$")
+                    Text("\(store.europeanCurrency ? "€" : "$")")
                         .font(.title2)
                         .fontWeight(.medium)
                         .foregroundColor(Color("Primary"))

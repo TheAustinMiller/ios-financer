@@ -38,7 +38,7 @@ struct ExpenseRow: View {
             
             Spacer()
             
-            Text("$\(expense.amount, specifier: "%.2f")")
+            Text("\(store.europeanCurrency ? "€" : "$")\(expense.amount, specifier: "%.2f")")
                 .font(.headline)
                 .foregroundColor(store.textColor)
         }

@@ -38,7 +38,7 @@ struct MonthlySummaryCard: View {
                     Text("Spent")
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    Text("$\(Int(spent))")
+                    Text("\(store.europeanCurrency ? "€" : "$")\(Int(spent))")
                         .font(.title3.bold())
                 }
                 Spacer()
@@ -46,7 +46,7 @@ struct MonthlySummaryCard: View {
                     Text("Remaining")
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    Text("$\(Int(remaining))")
+                    Text("\(store.europeanCurrency ? "€" : "$")\(Int(remaining))")
                         .font(.title3.bold())
                         .foregroundColor(remaining <= budget * 0.1 ? .red : .green)
                 }
@@ -57,7 +57,7 @@ struct MonthlySummaryCard: View {
                     Text("Avg/Day")
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    Text("$\(Int(avgPerDay))")
+                    Text("\(store.europeanCurrency ? "€" : "$")\(Int(avgPerDay))")
                         .font(.headline.bold())
                 }
                 Spacer()

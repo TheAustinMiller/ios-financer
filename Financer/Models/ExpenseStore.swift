@@ -17,6 +17,7 @@ class ExpenseStore: ObservableObject {
     @Published var categories: [Category] = []
     @AppStorage("monthlyBudget") var monthlyBudget: Double = 1000
     @AppStorage("darkMode") var darkModeEnabled: Bool = true
+    @AppStorage("europeanCurrency") var europeanCurrency: Bool = false
     
     var backgroundColor: Color {
             darkModeEnabled ? Color("Background") : Color.white.opacity(0.80)

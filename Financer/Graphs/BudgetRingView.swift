@@ -40,10 +40,10 @@ struct BudgetRingView: View {
 
             // Center text
             VStack(spacing: 6) {
-                Text("$\(Int(spent))")
+                Text("\(store.europeanCurrency ? "€" : "$")\(Int(spent))")
                     .font(.system(size: 40, weight: .bold))
 
-                Text("of $\(Int(budget))")
+                Text("of \(store.europeanCurrency ? "€" : "$")\(Int(budget))")
                     .font(.system(size: 16))
                     .foregroundColor(.secondary)
             }
