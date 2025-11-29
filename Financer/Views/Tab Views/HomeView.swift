@@ -37,7 +37,7 @@ struct HomeView: View {
 
             VStack(alignment: .center, spacing: 8) {
                 
-                Text("Welcome to Financer")
+                Text("Financer")
                     .foregroundColor(store.textColor)
                     .font(.largeTitle.bold())
                     .padding(.top, 40)
