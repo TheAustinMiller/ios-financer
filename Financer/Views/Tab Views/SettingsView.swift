@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var store: ExpenseStore
     @State private var showingBudgetSheet = false
+    @State private var showingClearConfirmation = false
 
     var body: some View {
         NavigationStack {
@@ -76,6 +77,48 @@ struct SettingsView: View {
                                             .stroke(Color("Primary").opacity(0.2), lineWidth: 1)
                                     )
                             )
+                            
+                            // Clear Expenses Section
+                            VStack(spacing: 0) {
+                                Button {
+                                    showingClearConfirmation = true
+                                } label: {
+                                    HStack {
+                                        VStack(alignment: .leading, spacing: 4) {
+                                            Text("Clear Expenses")
+                                                .font(.headline)
+                                                .foregroundColor(store.textColor)
+                                            
+                                            Text("Tap to clear all your expenses")
+                                                .font(.caption)
+                                                .foregroundColor(store.textColor.opacity(0.6))
+                                        }
+                                        Spacer()
+                                        Image(systemName: "trash")
+                                            .foregroundColor(.red)
+                                    }
+                                    .padding()
+                                }
+                            }
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(store.textColor.opacity(0.05))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .stroke(Color("Primary").opacity(0.2), lineWidth: 1)
+                                    )
+                            )
+                            // Confirmation dialog
+                            .confirmationDialog(
+                                "Are you sure you want to clear all expenses?",
+                                isPresented: $showingClearConfirmation,
+                                titleVisibility: .visible
+                            ) {
+                                Button("Clear Expenses", role: .destructive) {
+                                    store.clearExpenses()
+                                }
+                                Button("Cancel", role: .cancel) {}
+                            }
                             
                             // Aesthetic Settings Section
                             Text("Aesthetic Settings")

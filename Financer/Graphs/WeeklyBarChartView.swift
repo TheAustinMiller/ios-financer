@@ -12,7 +12,6 @@ struct WeeklyBarChartView: View {
     @EnvironmentObject var store: ExpenseStore
     
     private var weeklyTotals: [(day: String, total: Double)] {
-        
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE"
         
@@ -24,11 +23,18 @@ struct WeeklyBarChartView: View {
             formatter.string(from: $0.date)
         }
         
-        return grouped.map { (day: $0.key, total: $0.value.reduce(0) { $0 + $1.amount }) }
+        let mapped = grouped.map { (day: $0.key, total: $0.value.reduce(0) { $0 + $1.amount }) }
             .sorted { $0.day < $1.day }
+        
+        // If no data, return a single dummy value
+        return mapped.isEmpty ? [(day: "Mon", total: 0.0)] : mapped
     }
     
     var body: some View {
+        let isEmpty = store.expenses.filter {
+            Calendar.current.isDate($0.date, equalTo: Date(), toGranularity: .weekOfYear)
+        }.isEmpty
+        
         VStack(alignment: .leading) {
             Text("Weekly Breakdown")
                 .font(.headline)
@@ -41,10 +47,24 @@ struct WeeklyBarChartView: View {
                         x: .value("Day", entry.day),
                         y: .value("Total", entry.total)
                     )
-                    .foregroundStyle(Color("Primary"))
+                    .foregroundStyle(isEmpty ? Color.gray.opacity(0.3) : Color("Primary"))
                 }
             }
-            .padding()
+            .frame(height: 275)
+            .padding(.horizontal)
+            .overlay {
+                if isEmpty {
+                    Text("No expenses this week")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+            }
         }
     }
+}
+
+#Preview {
+    WeeklyBarChartView()
+        .environmentObject(ExpenseStore())
 }

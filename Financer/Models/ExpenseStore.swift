@@ -59,6 +59,11 @@ class ExpenseStore: ObservableObject {
         }
     }
     
+    func clearExpenses() {
+        expenses = []
+        saveData()
+    }
+    
     private func getDocumentsDirectory() -> URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
