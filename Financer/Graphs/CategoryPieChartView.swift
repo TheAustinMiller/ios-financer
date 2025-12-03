@@ -18,7 +18,7 @@ struct CategoryPieChartView: View {
             : store.spendingByCategory.map { ($0.category, $0.total) }
 
         VStack(alignment: .leading, spacing: 20) {
-            Text("Monthly Categories")
+            Text("Expense Categories")
                 .font(.headline)
                 .padding(.horizontal)
                 .foregroundColor(store.textColor)
