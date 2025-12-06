@@ -120,11 +120,11 @@ struct WeeklyBarChartView: View {
             }
             .overlay {
                 if showYearly && yearlyIsEmpty {
-                    Text("No expenses this year")
+                    Text("No expenses yet")
                         .font(.caption)
                         .foregroundColor(.gray)
                 } else if !showYearly && weeklyIsEmpty {
-                    Text("No expenses this week")
+                    Text("No expenses yet")
                         .font(.caption)
                         .foregroundColor(.gray)
                 }

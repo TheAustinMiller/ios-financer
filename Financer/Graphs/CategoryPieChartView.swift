@@ -42,7 +42,7 @@ struct CategoryPieChartView: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Expense Categories")
+                    Text("Category Breakdown")
                         .font(.headline)
                         .foregroundColor(store.textColor)
                 }
@@ -82,12 +82,9 @@ struct CategoryPieChartView: View {
             .overlay {
                 if isEmpty {
                     VStack {
-                        Text(showingTotalBreakdown ? "No expenses yet" : "No expenses this month")
+                        Text("No expenses yet")
                             .font(.caption)
                             .foregroundColor(.gray)
-                        Text("Tap the chart to toggle views")
-                            .font(.caption2)
-                            .foregroundColor(.gray.opacity(0.7))
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }

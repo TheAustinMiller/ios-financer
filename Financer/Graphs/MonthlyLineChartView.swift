@@ -124,7 +124,7 @@ struct MonthlyLineChartView: View {
             }
             .overlay {
                 if isEmpty {
-                    Text("No expenses for this period")
+                    Text("No expenses yet")
                         .font(.caption)
                         .foregroundColor(.gray)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
